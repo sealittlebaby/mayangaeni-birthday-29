@@ -325,7 +325,7 @@ function startVideoScene() {
   }, { once: true });
 
   // If src is placeholder, show overlay
-  fetch('assets/video.mp4', { method: 'HEAD' })
+  fetch('videobd.mp4', { method: 'HEAD' })
     .catch(() => {
       placeholder.style.display = 'flex';
     });
