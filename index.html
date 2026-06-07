@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, May 🌷</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Pacifico&family=Sacramento&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== SCENE 1: LOADING ===== -->
+  <div id="scene-loading" class="scene active">
+    <div class="loading-flowers">
+      <div class="bloom bloom-1">🌸</div>
+      <div class="bloom bloom-2">🌷</div>
+      <div class="bloom bloom-3">🌺</div>
+      <div class="bloom bloom-4">🌸</div>
+      <div class="bloom bloom-5">💐</div>
+      <div class="bloom bloom-6">🌷</div>
+    </div>
+    <div class="loading-content">
+      <div class="loading-flower-icon">🌷</div>
+      <p class="loading-text">Preparing your birthday surprise...</p>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p class="loading-sub">Please wait a moment ✨</p>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 2: VERIFICATION ===== -->
+  <div id="scene-verify" class="scene">
+    <div class="petal-bg"></div>
+    <div class="verify-card">
+      <div class="verify-flowers">
+        <span class="vf vf1">🌷</span>
+        <span class="vf vf2">🌸</span>
+        <span class="vf vf3">🌺</span>
+        <span class="vf vf4">💮</span>
+      </div>
+      <div class="verify-content">
+        <div class="verify-icon">🌷</div>
+        <h2 class="verify-title">Hello!</h2>
+        <p class="verify-question">Apakah kamu <strong>Mayang Aeni</strong>?</p>
+        <div class="verify-buttons">
+          <button class="btn-yes" onclick="verifyYes()">Ya, itu aku 💖</button>
+          <button class="btn-no" onclick="verifyNo()">Bukan 😅</button>
+        </div>
+      </div>
+      <div id="verifyDenied" class="verify-denied hidden">
+        <p>Website ini dibuat khusus untuk <strong>Mayang Aeni</strong>.</p>
+        <p>Silakan tutup halaman ini ya 🌸</p>
+        <button class="btn-close" onclick="window.close()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 3: GIFT INTRO ===== -->
+  <div id="scene-intro" class="scene">
+    <div class="florist-bg">
+      <div class="falling-petals" id="fallingPetals"></div>
+    </div>
+    <div class="intro-content">
+      <div class="intro-text-wrap">
+        <p class="intro-typing" id="introTyping"></p>
+      </div>
+      <button class="btn-gift hidden" id="btnGift" onclick="goToScene('scene-cake')">
+        <span>🎁</span> Buka Hadiah
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 4: BIRTHDAY CAKE ===== -->
+  <div id="scene-cake" class="scene">
+    <div class="cake-overlay"></div>
+    <div class="balloons" id="balloons"></div>
+    <div class="confetti-container" id="confetti"></div>
+    <div class="cake-wrap">
+      <div class="cake-container" id="cakeContainer">
+        <!-- Tier 3 (top) -->
+        <div class="tier tier-top">
+          <div class="tier-deco"></div>
+          <div class="tier-body">
+            <div class="candles-row" id="candlesTop">
+              <div class="candle-slot" data-n="0"><div class="candle"><div class="flame" id="f0"></div></div><span class="candle-num">2</span></div>
+              <div class="candle-slot" data-n="1"><div class="candle"><div class="flame" id="f1"></div></div><span class="candle-num">9</span></div>
+            </div>
+          </div>
+          <div class="tier-base"></div>
+        </div>
+        <!-- Tier 2 (middle) -->
+        <div class="tier tier-mid">
+          <div class="tier-body">
+            <div class="tier-decor">🌷 Happy Birthday 🌷</div>
+          </div>
+          <div class="tier-base"></div>
+        </div>
+        <!-- Tier 1 (bottom) -->
+        <div class="tier tier-bot">
+          <div class="tier-body">
+            <div class="tier-decor">May 🌸</div>
+          </div>
+          <div class="tier-base"></div>
+        </div>
+        <div class="cake-plate"></div>
+      </div>
+      <div class="stars-container" id="starsContainer"></div>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 5: LETTER ===== -->
+  <div id="scene-letter" class="scene">
+    <div class="letter-bg"></div>
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="envelope-seal">💌</div>
+        </div>
+      </div>
+    </div>
+    <div class="letter-paper hidden" id="letterPaper">
+      <div class="letter-corner lc-tl">🌸</div>
+      <div class="letter-corner lc-tr">🌷</div>
+      <div class="letter-corner lc-bl">💐</div>
+      <div class="letter-corner lc-br">🌺</div>
+      <div class="letter-inner" id="letterInner">
+        <h3 class="letter-heading">Happy Birthday, My Dearest May 🤍</h3>
+        <div class="letter-body-text" id="letterBodyText"></div>
+        <p class="letter-sign">With all my love,<br><strong>anisnurs</strong> 🌷</p>
+      </div>
+      <button class="btn-next-letter" id="btnNextLetter" onclick="goToScene('scene-video')" style="display:none">Lanjut ➜</button>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 6: VIDEO ===== -->
+  <div id="scene-video" class="scene">
+    <div class="florist-bg"></div>
+    <div class="video-wrap">
+      <p class="video-intro">One more thing... 🌷</p>
+      <div class="video-player-box">
+        <video id="birthdayVideo" controls playsinline preload="metadata">
+          <source src="assets/video.mp4" type="video/mp4" />
+          <div class="video-placeholder">
+            <span>🎬</span>
+            <p>Video akan segera hadir</p>
+          </div>
+        </video>
+        <div class="video-placeholder-overlay" id="videoPlaceholder">
+          <span class="vp-icon">🎬</span>
+          <p>Video Memory</p>
+          <small>Letakkan file <code>video.mp4</code> di folder <code>assets/</code></small>
+          <button class="btn-skip-video" onclick="goToScene('scene-voucher')">Lanjut ke Hadiah ➜</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 7: VOUCHER ===== -->
+  <div id="scene-voucher" class="scene">
+    <div class="florist-bg"></div>
+    <div class="confetti-container" id="confetti2"></div>
+    <div class="voucher-wrap" id="voucherWrap">
+      <div class="voucher" id="voucher">
+        <div class="voucher-left">
+          <span class="voucher-icon">🎁</span>
+        </div>
+        <div class="voucher-main">
+          <div class="voucher-floral-top">🌸 ✨ 🌷 ✨ 🌸</div>
+          <p class="voucher-label">BIRTHDAY GIFT VOUCHER</p>
+          <div class="voucher-divider"></div>
+          <p class="voucher-desc">Bawa kupon ini untuk menukarkan<br>dengan hadiah ulang tahun mu</p>
+          <div class="voucher-info">
+            <div><span>Untuk:</span> <strong>Mayang Aeni</strong></div>
+            <div><span>Dari:</span> <strong>anisnurs</strong></div>
+            <div><span>Valid:</span> <strong>Anytime you want 💖</strong></div>
+          </div>
+          <div class="voucher-floral-bot">🌺 🌷 💮 🌷 🌺</div>
+        </div>
+        <div class="voucher-right">
+          <span class="voucher-icon">🎀</span>
+        </div>
+      </div>
+      <div class="voucher-shine"></div>
+      <button class="btn-claim" id="btnClaim" onclick="claimGift()">Claim Your Gift 🎁</button>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 8: FINAL ===== -->
+  <div id="scene-final" class="scene">
+    <div class="final-bg"></div>
+    <div class="fairy-lights" id="fairyLights"></div>
+    <div class="final-petals" id="finalPetals"></div>
+    <div class="sparkles" id="sparkles"></div>
+    <div class="final-content">
+      <div class="final-flowers-top">🌸 🌷 💐 🌷 🌸</div>
+      <h1 class="final-title">Thank you for being part of my life 🌷</h1>
+      <h2 class="final-birthday">Happy 29th Birthday, Mayaang 💖</h2>
+      <p class="final-wish">May all your dreams bloom beautifully,<br>just like these flowers.</p>
+      <div class="final-divider">✨ 🌷 ✨</div>
+      <p class="final-credit">Made with love by <strong>anisnurs</strong> 💖</p>
+    </div>
+    <div class="final-confetti" id="finalConfetti"></div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
